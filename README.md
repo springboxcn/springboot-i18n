@@ -16,7 +16,7 @@ source.getMessage("20000",null,new Locale(lang,lang));
 @AfterReturning(returning = "rvt",value = "controllerLangPointcut()")
 public void resetCode(Object rvt) throws Throwable {
     String lang = LangAOP.getLang();
-    //MessageSource source = new DelegatingMessageSource();
+    
     MessageSource source = SpringContextUtil.getBean(MessageSource.class);
     System.out.println("====================================");
     System.out.println(source.getMessage("20000", null, "unknown code", new Locale(lang, lang)));
@@ -24,6 +24,8 @@ public void resetCode(Object rvt) throws Throwable {
     resp.setDesc(source.getMessage("20000", null, "unknown code", new Locale(lang, lang)));
 }
 ```
+
+`MessageSource` 默认实现 `ResourceBundleMessageSource`
 
 ```yml
 spring:
